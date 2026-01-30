@@ -1,2 +1,7 @@
+# Binaries
 client
 server
+
+# Compiler/LSP
+compile_commands.json
+.cache/

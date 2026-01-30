@@ -5,8 +5,8 @@
 #include<arpa/inet.h>
 #include<netinet/in.h>
 #include<pthread.h>
+#include "common.h"
 
-#define IP "127.0.0.1"
 
 struct sockaddr_in address;
 
@@ -41,7 +41,7 @@ int main() {
 
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
 	address.sin_family = AF_INET;
-	address.sin_port = htons(7007);
+	address.sin_port = htons(PORT);
 	inet_pton(AF_INET, IP, &address.sin_addr);
 
 	int connection = connect(sock, (void*) &address, sizeof(address));

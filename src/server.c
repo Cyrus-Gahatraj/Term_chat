@@ -6,8 +6,8 @@
 #include<stdlib.h>
 #include<unistd.h>
 #include<pthread.h>
+#include "common.h"
 
-#define IP "127.0.0.1"
 #define MAX_CLIENTS 100
 
 int clients[MAX_CLIENTS];
@@ -66,7 +66,7 @@ int main() {
 	
 	int server_sock = socket(AF_INET, SOCK_STREAM, 0);
 	address.sin_family = AF_INET;
-	address.sin_port = htons(7007);
+	address.sin_port = htons(PORT);
 	inet_pton(AF_INET, IP, &address.sin_addr);
 
 	int bind_addr = bind(server_sock, (void*)&address, sizeof(address));
