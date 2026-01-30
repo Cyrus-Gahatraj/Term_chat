@@ -6,11 +6,10 @@ Clients connect, choose a name, and exchange messages in real time through a cen
 
 ## Build
 
-Compile the server and the client
+Compile the server and the client using *make*
 
 ```bash
-gcc server.c -o server
-gcc client.c -o client
+make # Two executable, client and server are created
 ```
 
 
