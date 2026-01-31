@@ -1,8 +1,5 @@
 #include<stdio.h>
 #include<string.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<arpa/inet.h>
 #include<stdlib.h>
 #include<unistd.h>
 #include<pthread.h>
@@ -12,11 +9,6 @@
 
 int clients[MAX_CLIENTS];
 int client_count = 0;
-
-typedef struct User{
-	char name[32];
-	char message[512];
-} User;
 
 struct sockaddr_in address;
 
@@ -64,11 +56,9 @@ void* client_thread(void * arg){
 int main() {
 	pthread_t thread;
 	
-	int server_sock = socket(AF_INET, SOCK_STREAM, 0);
-	address.sin_family = AF_INET;
-	address.sin_port = htons(PORT);
-	inet_pton(AF_INET, IP, &address.sin_addr);
-
+	int server_sock = get_tcp4(); 
+	connect_tcp4(&address);
+	
 	int bind_addr = bind(server_sock, (void*)&address, sizeof(address));
 	if (bind_addr != 0){
 		printf("Binding failed\n");
